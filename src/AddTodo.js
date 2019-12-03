@@ -8,7 +8,8 @@ const AddTodo = props => {
         const newTodo = {
             id: uuid.v4(),
             completed: false,
-            task: todo
+            task: todo,
+            date: new Date()
         }
         props.addTodo(newTodo)
         setTodo("")

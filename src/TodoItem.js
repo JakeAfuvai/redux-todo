@@ -3,6 +3,7 @@ import React, {useState} from "react"
 const TodoItem = props => {
     const [editMode, setEditMode] = useState(false)
     const [editedTask, setEditedTask] = useState("")
+    const [showDate, setShowDate] = useState(false)
 
     const completedStyle = props.todo.completed ?
         {
@@ -12,7 +13,7 @@ const TodoItem = props => {
         null
 
     const taskDisplay = !editMode ? 
-        <p style={completedStyle}>{props.todo.task}</p> 
+        <p style={completedStyle}>{props.todo.task}</p>
         : 
         <input 
             className="edit-input" 
@@ -21,6 +22,14 @@ const TodoItem = props => {
             placeholder={props.todo.task} 
             onChange={e => setEditedTask(e.target.value)}
         />
+
+    const showMore = showDate ? 
+        <>
+            <p>Date Added: {props.todo.date.getDate()}/{props.todo.date.getMonth() + 1}</p> 
+            <button onClick={() => setShowDate(false)}>show less</button>
+        </>
+        : 
+        <button onClick={() => setShowDate(true)}>show more</button>
 
     const saveEditButton = editMode ? "save" : "edit"
 
@@ -38,6 +47,7 @@ const TodoItem = props => {
     return (
         <div>
             {taskDisplay}
+            {showMore}
             <button onClick={handleClick}>-</button>
             <input 
                 type="checkbox"
