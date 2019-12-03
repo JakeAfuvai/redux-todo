@@ -38,7 +38,6 @@ const TodoItem = props => {
     return (
         <div>
             {taskDisplay}
-            <p>{props.todo.id}</p>
             <button onClick={handleClick}>-</button>
             <input 
                 type="checkbox"

@@ -25,6 +25,11 @@ const reducer = (state = initialState, action) => {
             return {
                 todos: todosArrCopyUpdateTask
             } 
+        case "REMOVE_COMPLETED_TODOS":
+            const todosArrCopyRemCompleted = [...state.todos.filter(todo => !todo.completed)]
+            return {
+                todos: todosArrCopyRemCompleted
+            }
         default:
             return state
     }
