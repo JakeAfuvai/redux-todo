@@ -25,7 +25,7 @@ const TodoItem = props => {
 
     const showMore = showDate ? 
         <>
-            <p>Date Added: {props.todo.date.getDate()}/{props.todo.date.getMonth() + 1}</p> 
+            <p>Date Added: {props.todo.date.getMonth() + 1}/{props.todo.date.getDate()}</p> 
             <button onClick={() => setShowDate(false)}>show less</button>
         </>
         : 
